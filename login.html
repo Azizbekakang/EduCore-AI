@@ -1,36 +1,153 @@
 <!doctype html>
 <html lang="uz">
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Kirish | EduCore AI</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <style>
+    body {
+      background: radial-gradient(circle at top, rgba(99,102,241,.35), transparent 35%),
+                  linear-gradient(135deg, #020617, #1e1b4b 55%, #581c87);
+      font-family: "Segoe UI", sans-serif;
+    }
+    .glass { background: rgba(255,255,255,.09); border: 1px solid rgba(255,255,255,.16); backdrop-filter: blur(18px); }
+    .field { width:100%; border-radius:.85rem; border:1px solid rgba(255,255,255,.14); background:rgba(0,0,0,.22); padding:.85rem 1rem; color:white; outline:none; transition:.2s; }
+    .field:focus { border-color:#facc15; box-shadow:0 0 0 3px rgba(250,204,21,.18); }
+    .field::placeholder { color:rgba(255,255,255,.4); }
+  </style>
 </head>
-<body class="min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-fuchsia-950 text-white flex items-center justify-center p-4">
+<body class="min-h-screen text-white flex items-center justify-center p-4">
   <main class="w-full max-w-md">
-    <div class="text-center mb-8"><a href="index.html" class="inline-flex items-center gap-3"><span class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-yellow-400 to-pink-500 text-black font-black text-xl flex items-center justify-center">AI</span><span class="text-3xl font-black text-yellow-300">EduCore</span></a><p class="text-white/60 mt-3">Ta’lim platformasiga xush kelibsiz</p></div>
-    <section class="rounded-3xl border border-white/15 bg-white/10 backdrop-blur-xl shadow-2xl p-7">
-      <div class="grid grid-cols-2 gap-2 rounded-xl bg-black/20 p-1 mb-6"><button id="loginTab" class="tab rounded-lg bg-yellow-400 text-black py-2 font-bold">Kirish</button><button id="registerTab" class="tab rounded-lg py-2 font-bold text-white/70">Ro‘yxatdan o‘tish</button></div>
-      <form id="authForm" class="space-y-4">
-        <div id="nameWrap" class="hidden"><label class="text-sm text-white/70">Ism</label><input id="name" class="field" placeholder="Ismingiz" autocomplete="name"></div>
-        <div id="phoneWrap" class="hidden"><label class="text-sm text-white/70">Telefon</label><input id="phone" class="field" placeholder="+998 XX XXX XX XX" autocomplete="tel"></div>
-        <div><label class="text-sm text-white/70">Email</label><input id="email" class="field" type="email" placeholder="example@mail.com" required autocomplete="email"></div>
-        <div><label class="text-sm text-white/70">Parol</label><input id="pass" class="field" type="password" placeholder="Parol" required autocomplete="current-password"></div>
-        <button id="submitBtn" class="w-full rounded-xl bg-yellow-400 text-black py-3 font-black hover:bg-yellow-300 transition"><i class="fa-solid fa-right-to-bracket mr-2"></i>Kirish</button>
+    <div class="text-center mb-7">
+      <a href="index.html" class="inline-flex items-center gap-3">
+        <span class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-yellow-400 to-pink-500 text-black font-black text-xl flex items-center justify-center">AI</span>
+        <span class="text-3xl font-black text-yellow-300">EduCore</span>
+      </a>
+      <p class="text-white/60 mt-3">Ta’lim platformasiga xush kelibsiz</p>
+    </div>
+
+    <section class="glass rounded-3xl shadow-2xl p-7">
+      <div class="grid grid-cols-2 gap-2 rounded-xl bg-black/20 p-1 mb-6">
+        <button id="loginTab" type="button" class="rounded-lg bg-yellow-400 text-black py-2 font-bold">Kirish</button>
+        <button id="registerTab" type="button" class="rounded-lg py-2 font-bold text-white/70">Ro‘yxatdan o‘tish</button>
+      </div>
+
+      <form id="authForm" class="space-y-4" novalidate>
+        <div id="nameWrap" class="hidden">
+          <label for="name" class="block text-sm text-white/70 mb-1">Ism</label>
+          <input id="name" class="field" placeholder="Ismingiz" autocomplete="name">
+        </div>
+        <div id="phoneWrap" class="hidden">
+          <label for="phone" class="block text-sm text-white/70 mb-1">Telefon</label>
+          <input id="phone" class="field" placeholder="+998 XX XXX XX XX" autocomplete="tel">
+        </div>
+        <div>
+          <label for="email" class="block text-sm text-white/70 mb-1">Email</label>
+          <input id="email" class="field" type="email" placeholder="example@mail.com" required autocomplete="email">
+        </div>
+        <div>
+          <label for="pass" class="block text-sm text-white/70 mb-1">Parol</label>
+          <div class="relative">
+            <input id="pass" class="field pr-12" type="password" placeholder="Kamida 6 ta belgi" required autocomplete="current-password">
+            <button id="togglePass" type="button" class="absolute right-3 top-1/2 -translate-y-1/2 text-white/50 hover:text-yellow-300" aria-label="Parolni ko‘rsatish"><i class="fa-solid fa-eye"></i></button>
+          </div>
+        </div>
+        <label id="rememberWrap" class="flex items-center gap-2 text-sm text-white/60 cursor-pointer">
+          <input id="remember" type="checkbox" class="accent-yellow-400"> Meni eslab qolish
+        </label>
+        <button id="submitBtn" type="submit" class="w-full rounded-xl bg-yellow-400 text-black py-3 font-black hover:bg-yellow-300 transition">
+          <i class="fa-solid fa-right-to-bracket mr-2"></i>Kirish
+        </button>
       </form>
+
       <p id="message" class="hidden mt-4 rounded-xl p-3 text-sm"></p>
-      <div class="mt-6 border-t border-white/10 pt-4 text-center text-xs text-white/45">Admin: abduraimovazizbek20121118@gmail.com</div>
+      <div class="mt-6 border-t border-white/10 pt-4 text-center text-xs text-white/45">
+        Admin kirishi: abduraimovazizbek20121118@gmail.com
+      </div>
     </section>
   </main>
-  <style>.field{width:100%;margin-top:.35rem;border-radius:.75rem;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.2);padding:.8rem;color:white;outline:none}.field:focus{border-color:#facc15;box-shadow:0 0 0 2px #facc15}</style>
+
   <script>
-    const ADMIN_EMAIL='abduraimovazizbek20121118@gmail.com', ADMIN_PASS='admin_ploi';
-    let mode='login', users=JSON.parse(localStorage.getItem('talimhub_users')||'[]');
-    const $=id=>document.getElementById(id), message=$('message');
-    function setMode(next){mode=next;const register=mode==='register';$('nameWrap').classList.toggle('hidden',!register);$('phoneWrap').classList.toggle('hidden',!register);$('name').required=register;$('phone').required=register;$('submitBtn').innerHTML=register?'<i class="fa-solid fa-user-plus mr-2"></i>Ro‘yxatdan o‘tish':'<i class="fa-solid fa-right-to-bracket mr-2"></i>Kirish';document.querySelectorAll('.tab').forEach(b=>b.classList.remove('bg-yellow-400','text-black'));$(register?'registerTab':'loginTab').classList.add('bg-yellow-400','text-black')}
-    function show(text,good=false){message.textContent=text;message.className='mt-4 rounded-xl p-3 text-sm '+(good?'bg-green-500/20 text-green-300':'bg-red-500/20 text-red-300')}
-    $('loginTab').onclick=()=>setMode('login');$('registerTab').onclick=()=>setMode('register');
-    $('authForm').onsubmit=e=>{e.preventDefault();const email=$('email').value.trim().toLowerCase(),pass=$('pass').value;if(mode==='login'){if(email===ADMIN_EMAIL&&pass===ADMIN_PASS){const admin={name:'Admin',email:ADMIN_EMAIL,role:'admin'};sessionStorage.setItem('currentUser',JSON.stringify(admin));localStorage.setItem('currentUser',JSON.stringify(admin));location.href='adminpanel.html';return}const user=users.find(u=>u.email===email&&u.pass===pass);if(!user){show('Email yoki parol noto‘g‘ri.');return}sessionStorage.setItem('currentUser',JSON.stringify(user));show('Muvaffaqiyatli kirdingiz!',true);setTimeout(()=>location.href='index.html',500)}else{const name=$('name').value.trim(),phone=$('phone').value.trim();if(!name||!phone||!email||!pass){show('Barcha maydonlarni to‘ldiring.');return}if(email===ADMIN_EMAIL){show('Bu email admin uchun band.');return}if(users.some(u=>u.email===email)){show('Bu email allaqachon ro‘yxatdan o‘tgan.');return}const user={id:Date.now(),name,phone,email,pass,role:'user',joined:new Date().toLocaleDateString('uz-UZ')};users.push(user);localStorage.setItem('talimhub_users',JSON.stringify(users));sessionStorage.setItem('currentUser',JSON.stringify(user));show('Ro‘yxatdan o‘tish muvaffaqiyatli!',true);setTimeout(()=>location.href='index.html',500)}};
+    const ADMIN_EMAIL = 'abduraimovazizbek20121118@gmail.com';
+    const ADMIN_PASS = 'admin_ploi';
+    const $ = id => document.getElementById(id);
+    let mode = 'login';
+    let users = JSON.parse(localStorage.getItem('talimhub_users') || '[]');
+
+    function showMessage(text, success = false) {
+      const box = $('message');
+      box.textContent = text;
+      box.className = `mt-4 rounded-xl p-3 text-sm ${success ? 'bg-green-500/20 text-green-300' : 'bg-red-500/20 text-red-300'}`;
+    }
+
+    function setMode(nextMode) {
+      mode = nextMode;
+      const register = mode === 'register';
+      $('nameWrap').classList.toggle('hidden', !register);
+      $('phoneWrap').classList.toggle('hidden', !register);
+      $('rememberWrap').classList.toggle('hidden', register);
+      $('name').required = register;
+      $('phone').required = register;
+      $('pass').autocomplete = register ? 'new-password' : 'current-password';
+      $('submitBtn').innerHTML = register
+        ? '<i class="fa-solid fa-user-plus mr-2"></i>Ro‘yxatdan o‘tish'
+        : '<i class="fa-solid fa-right-to-bracket mr-2"></i>Kirish';
+      $('loginTab').className = register ? 'rounded-lg py-2 font-bold text-white/70' : 'rounded-lg bg-yellow-400 text-black py-2 font-bold';
+      $('registerTab').className = register ? 'rounded-lg bg-yellow-400 text-black py-2 font-bold' : 'rounded-lg py-2 font-bold text-white/70';
+      $('message').className = 'hidden';
+    }
+
+    $('loginTab').addEventListener('click', () => setMode('login'));
+    $('registerTab').addEventListener('click', () => setMode('register'));
+
+    $('togglePass').addEventListener('click', () => {
+      const input = $('pass');
+      const visible = input.type === 'text';
+      input.type = visible ? 'password' : 'text';
+      $('togglePass').innerHTML = `<i class="fa-solid fa-eye${visible ? '' : '-slash'}"></i>`;
+    });
+
+    $('authForm').addEventListener('submit', event => {
+      event.preventDefault();
+      const email = $('email').value.trim().toLowerCase();
+      const pass = $('pass').value;
+
+      if (!email || !pass) return showMessage('Email va parolni kiriting.');
+      if (pass.length < 6) return showMessage('Parol kamida 6 ta belgidan iborat bo‘lishi kerak.');
+
+      if (mode === 'login') {
+        if (email === ADMIN_EMAIL && pass === ADMIN_PASS) {
+          const admin = { name: 'Admin', email: ADMIN_EMAIL, role: 'admin' };
+          sessionStorage.setItem('currentUser', JSON.stringify(admin));
+          localStorage.setItem('currentUser', JSON.stringify(admin));
+          location.href = 'adminpanel.html';
+          return;
+        }
+
+        const user = users.find(item => item.email === email && item.pass === pass);
+        if (!user) return showMessage('Email yoki parol noto‘g‘ri.');
+        sessionStorage.setItem('currentUser', JSON.stringify(user));
+        if ($('remember').checked) localStorage.setItem('currentUser', JSON.stringify(user));
+        showMessage(`Xush kelibsiz, ${user.name}!`, true);
+        setTimeout(() => location.href = 'index.html', 600);
+        return;
+      }
+
+      const name = $('name').value.trim();
+      const phone = $('phone').value.trim();
+      if (!name || !phone) return showMessage('Ism va telefon raqamini kiriting.');
+      if (email === ADMIN_EMAIL) return showMessage('Bu email admin uchun band.');
+      if (users.some(item => item.email === email)) return showMessage('Bu email allaqachon ro‘yxatdan o‘tgan.');
+
+      const user = { id: Date.now(), name, phone, email, pass, role: 'user', joined: new Date().toLocaleDateString('uz-UZ') };
+      users.push(user);
+      localStorage.setItem('talimhub_users', JSON.stringify(users));
+      sessionStorage.setItem('currentUser', JSON.stringify(user));
+      showMessage('Ro‘yxatdan o‘tish muvaffaqiyatli yakunlandi!', true);
+      setTimeout(() => location.href = 'index.html', 600);
+    });
   </script>
 </body>
 </html>
