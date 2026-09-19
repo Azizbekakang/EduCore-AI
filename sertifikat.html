@@ -1,4 +1,111 @@
 <!DOCTYPE html>
-<html lang="uz"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Sertifikatlar | EduCore AI</title><script src="https://cdn.tailwindcss.com"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"><style>body{background:radial-gradient(circle at top,#7c3aed,transparent 35%),linear-gradient(135deg,#0f172a,#312e81);font-family:Segoe UI,sans-serif}.certificate{background:linear-gradient(135deg,#fffdf2,#fff,#fef3c7);border:10px solid #d4af37;box-shadow:0 25px 80px #0008}.locked{filter:grayscale(.7);opacity:.78}</style></head>
-<body class="min-h-screen text-white p-6 md:p-10"><main class="max-w-6xl mx-auto"><header class="flex justify-between mb-10"><a href="index.html" class="text-yellow-300"><i class="fa-solid fa-arrow-left mr-2"></i>Bosh sahifa</a><a href="mavjud-kurslar.html" class="bg-white/10 px-4 py-2 rounded-xl">Kurslar</a></header><section class="text-center mb-10"><i class="fa-solid fa-award text-6xl text-yellow-300"></i><h1 class="text-5xl font-black mt-4">Sertifikatlar markazi</h1><p class="text-white/70 mt-3">Kurs progressi va sertifikat holatini ko‘ring</p></section><div id="progressList" class="grid md:grid-cols-3 gap-5 mb-10"></div><section id="certificate" class="certificate locked text-slate-900 rounded-3xl p-8 md:p-16 text-center"><i class="fa-solid fa-lock text-4xl text-slate-500"></i><p class="uppercase tracking-[.3em] text-amber-700 font-bold mt-4">EduCore Academy</p><h2 class="text-5xl font-black text-indigo-900 my-5">SERTIFIKAT</h2><p class="text-lg">Ushbu sertifikat</p><p id="student" class="text-4xl font-bold text-purple-800 my-4">Talaba</p><p id="status" class="text-xl">kursni yakunlash uchun progressni to‘ldiring</p><button id="print" disabled class="mt-8 bg-slate-400 text-white px-8 py-4 rounded-xl font-bold">Sertifikatni chop etish</button></section></main><script>
-const courses=[['python_progress','Python dasturlash',3],['english_progress','Ingliz tili A1–C1',5],['web_progress','Web dasturlash',2]];const user=JSON.parse(sessionStorage.getItem('currentUser')||'{}');student.textContent=user.name||'Talaba';let complete=false;courses.forEach(([key,name,total])=>{const done=JSON.parse(localStorage.getItem(key)||'[]').length,p=Math.min(100,Math.round(done/total*100));if(p===100)complete=true;progressList.innerHTML+=`<div class="bg-white/10 p-5 rounded-2xl"><div class="flex justify-between mb-3"><b>${name}</b><span class="text-yellow-300">${p}%</span></div><div class="h-3 bg-black/30 rounded-full"><div class="h-3 rounded-full bg-gradient-to-r from-emerald-400 to-cyan-400" style="width:${p}%"></div></div><p class="text-sm text-white/60 mt-3">${done}/${total} dars bajarildi • ${total-done} dars qoldi</p></div>`});if(complete){certificate.classList.remove('locked');status.textContent='Tabriklaymiz! Sertifikatingiz tayyor.';print.disabled=false;print.className='mt-8 bg-emerald-600 text-white px-8 py-4 rounded-xl font-bold';print.onclick=()=>window.print()}</script></body></html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sertifikatlar | Edu-AI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+  <style>
+    body {
+      background: radial-gradient(circle at top, rgba(251,191,36,0.2), transparent 18%),
+                  linear-gradient(135deg, #0f172a, #111827, #312e81);
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .glass { background: rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.12); backdrop-filter: blur(14px); }
+    .certificate-card {
+      background: linear-gradient(135deg, #fffef4, #fff, #fef3c7);
+      border: 8px solid #d4af37;
+      box-shadow: 0 28px 80px rgba(0,0,0,.25);
+    }
+    .locked { opacity: .72; filter: grayscale(.2); }
+  </style>
+</head>
+<body class="min-h-screen text-white p-6 md:p-10">
+  <main class="max-w-6xl mx-auto">
+    <header class="flex justify-between items-center mb-10">
+      <a href="index.html" class="text-yellow-300 hover:text-yellow-200 font-medium">
+        <i class="fa-solid fa-arrow-left mr-2"></i>Bosh sahifa
+      </a>
+      <a href="mavjud-kurslar.html" class="glass px-4 py-2 rounded-xl text-sm">
+        <i class="fa-solid fa-graduation-cap mr-2 text-cyan-300"></i>Kurslar
+      </a>
+    </header>
+
+    <section class="text-center mb-10">
+      <div class="inline-flex items-center gap-2 text-yellow-300 uppercase tracking-[0.25em] text-xs font-bold mb-4">
+        <i class="fa-solid fa-award"></i> Edu-AI Academy
+      </div>
+      <h1 class="text-5xl md:text-6xl font-black">Sertifikatlar markazi</h1>
+      <p class="text-white/70 mt-3 text-lg">Kurs progressi va tasdiqlangan sertifikat holati</p>
+    </section>
+
+    <div id="progressList" class="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mb-10"></div>
+
+    <section id="certificate" class="certificate-card locked text-slate-900 rounded-[30px] p-8 md:p-16 text-center">
+      <div class="mb-5 text-amber-700 text-5xl"><i class="fa-solid fa-certificate"></i></div>
+      <p class="uppercase tracking-[0.3em] text-sm font-bold text-amber-700">Edu-AI Academy</p>
+      <h2 class="text-5xl font-black text-indigo-900 my-5">SERTIFIKAT</h2>
+      <p class="text-lg text-slate-700">Ushbu sertifikat bilan tasdiqlanadiki</p>
+      <p id="studentName" class="text-4xl font-black text-purple-800 my-5">Talaba</p>
+      <p id="certificateTitle" class="text-2xl text-slate-700">Kurslarni to‘liq yakunlangandan so‘ng ochiladi</p>
+
+      <button id="printBtn" disabled class="mt-8 bg-slate-400 text-white px-8 py-4 rounded-xl font-bold text-lg cursor-not-allowed">
+        Sertifikatni chop etish
+      </button>
+    </section>
+  </main>
+
+  <script>
+    const courseStats = [
+      { key: 'python_progress', label: 'Python dasturlash', total: 7 },
+      { key: 'web_progress', label: 'Web dasturlash', total: 8 },
+      { key: 'english_progress', label: 'Ingliz tili A1–C1', total: 6 },
+      { key: 'php_progress', label: 'PHP Backend', total: 7 },
+      { key: 'prompt_progress', label: 'AI Prompt Engineering', total: 7 },
+      { key: 'ai_progress', label: 'AI asoslari', total: 7 }
+    ];
+
+    const user = JSON.parse(sessionStorage.getItem('currentUser') || '{}');
+    const studentName = document.getElementById('studentName');
+    studentName.textContent = user.name || 'Talaba';
+
+    const progressList = document.getElementById('progressList');
+    let earned = 0;
+
+    progressList.innerHTML = courseStats.map(({ key, label, total }) => {
+      const completed = JSON.parse(localStorage.getItem(key) || '[]').length;
+      const percent = Math.min(100, Math.round((completed / total) * 100));
+      if (percent === 100) earned++;
+      return `
+        <div class="glass rounded-2xl p-5">
+          <div class="flex justify-between items-center mb-3">
+            <span class="font-bold">${label}</span>
+            <span class="text-yellow-300 font-semibold">${percent}%</span>
+          </div>
+          <div class="h-3 bg-white/10 rounded-full overflow-hidden">
+            <div class="h-full rounded-full bg-gradient-to-r from-emerald-400 to-cyan-400" style="width:${percent}%"></div>
+          </div>
+          <p class="text-sm text-white/60 mt-3">${completed}/${total} dars yakunlandi</p>
+        </div>
+      `;
+    }).join('');
+
+    const cert = document.getElementById('certificate');
+    const printBtn = document.getElementById('printBtn');
+    const certTitle = document.getElementById('certificateTitle');
+
+    if (earned === courseStats.length) {
+      cert.classList.remove('locked');
+      certTitle.textContent = 'Barcha kurslarni muvaffaqiyatli yakunladingiz';
+      printBtn.disabled = false;
+      printBtn.classList.remove('bg-slate-400', 'cursor-not-allowed');
+      printBtn.classList.add('bg-emerald-600', 'hover:bg-emerald-500');
+      printBtn.textContent = 'Sertifikatni chop etish';
+      printBtn.onclick = () => window.print();
+    } else {
+      certTitle.textContent = 'Kurslarni to‘liq yakunlangandan so‘ng ochiladi';
+    }
+  </script>
+</body>
+</html>
