@@ -4,20 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EduCore – Yangi Zamon, Yuksak Bilim</title>
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome Icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
     <style>
-        body { 
-            background: linear-gradient(rgba(0,0,0,0.85), rgba(20,0,40,0.9)), url('https://images.unsplash.com/photo-1524995997946-a0a336aa99e8?w=2000') center/cover fixed; 
-            color: white; 
+        body {
+            background: linear-gradient(rgba(0,0,0,0.85), rgba(20,0,40,0.9)), url('https://images.unsplash.com/photo-1524995997946-a0a336aa99e8?w=2000') center/cover fixed;
+            color: white;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        .glass { 
-            backdrop-filter: blur(16px); 
-            background: rgba(255, 255, 255, 0.07); 
-            border: 1px solid rgba(255, 255, 255, 0.15); 
+        .glass {
+            backdrop-filter: blur(16px);
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.15);
         }
         .glass-card {
             backdrop-filter: blur(12px);
@@ -31,116 +29,72 @@
     <!-- NAVIGATSIYA -->
     <nav class="glass fixed top-0 w-full z-50 shadow-2xl">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <!-- Logo -->
-            <div class="flex items-center space-x-3">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-yellow-400 to-pink-500 flex items-center justify-center font-bold text-black text-xl shadow-lg">
-                    EC
-                </div>
-                <span class="text-2xl md:text-3xl font-extrabold bg-gradient-to-r from-yellow-400 to-pink-500 bg-clip-text text-transparent">
-                    EduCore
-                </span>
-            </div>
+            <a href="index.html" class="flex items-center space-x-3" aria-label="EduCore bosh sahifa">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-yellow-400 to-pink-500 flex items-center justify-center font-bold text-black text-xl shadow-lg">EC</div>
+                <span class="text-2xl md:text-3xl font-extrabold bg-gradient-to-r from-yellow-400 to-pink-500 bg-clip-text text-transparent">EduCore</span>
+            </a>
 
-            <!-- Menyu Linklari -->
-            <div class="hidden lg:flex items-center space-x-6 text-base font-medium">
+            <div class="hidden lg:flex items-center space-x-5 text-base font-medium">
                 <a href="#kurslar" class="hover:text-yellow-400 transition"><i class="fa-solid fa-graduation-cap mr-1"></i> Kurslar</a>
                 <a href="kutubxona.html" class="hover:text-yellow-400 transition"><i class="fa-solid fa-book mr-1"></i> Kutubxona</a>
                 <a href="masalalar.html" class="hover:text-yellow-400 transition"><i class="fa-solid fa-code mr-1"></i> Masalalar</a>
                 <a href="olimpiada.html" class="hover:text-yellow-400 transition"><i class="fa-solid fa-trophy mr-1"></i> Olimpiadalar</a>
+                <a href="reyting.html" class="hover:text-yellow-400 transition"><i class="fa-solid fa-ranking-star mr-1"></i> Reyting</a>
+                <a href="chat.html" class="hover:text-yellow-400 transition"><i class="fa-solid fa-comments mr-1"></i> Chat</a>
                 <a href="profil.html" class="hover:text-yellow-400 transition"><i class="fa-solid fa-user mr-1"></i> Profil</a>
             </div>
 
-            <!-- Kirish Tugmasi -->
-            <div>
-                <a href="login.html" class="bg-yellow-400 text-black px-6 py-2.5 rounded-full font-bold hover:bg-yellow-300 transition shadow-lg inline-flex items-center">
-                    <i class="fa-solid fa-right-to-bracket mr-2"></i> Kirish
-                </a>
-            </div>
+            <a href="login.html" class="bg-yellow-400 text-black px-6 py-2.5 rounded-full font-bold hover:bg-yellow-300 transition shadow-lg inline-flex items-center">
+                <i class="fa-solid fa-right-to-bracket mr-2"></i> Kirish
+            </a>
         </div>
     </nav>
 
-    <!-- HERO SECTION (ASOSIY QISM) -->
+    <!-- HERO SECTION -->
     <main class="container mx-auto px-6 pt-36 pb-20 flex-grow flex flex-col items-center justify-center text-center">
-        
-        <!-- Yuqori Emblem / Badge -->
         <div class="mb-8 inline-flex items-center space-x-2 glass px-6 py-2 rounded-full text-yellow-300 text-sm font-semibold tracking-wider uppercase shadow-inner">
             <i class="fa-solid fa-award text-yellow-400"></i>
             <span>Kelajak Ta'lim Platformasi • 2026</span>
         </div>
 
-        <!-- Asosiy Sarlavha -->
-        <h1 class="text-5xl md:text-8xl font-black tracking-tight mb-6 drop-shadow-2xl">
-            EduCore <span class="text-yellow-400">AI</span>
-        </h1>
-        <p class="text-xl md:text-3xl text-gray-300 font-light mb-10 tracking-wide">
-            Yangi zamon, yuksak bilim
-        </p>
+        <h1 class="text-5xl md:text-8xl font-black tracking-tight mb-6 drop-shadow-2xl">EduCore <span class="text-yellow-400">AI</span></h1>
+        <p class="text-xl md:text-3xl text-gray-300 font-light mb-10 tracking-wide">Yangi zamon, yuksak bilim</p>
 
-        <!-- Kichik Xususiyatlar Qatori -->
         <div class="flex flex-wrap justify-center gap-4 mb-12 text-sm md:text-base font-medium text-gray-200">
-            <span class="glass px-4 py-2 rounded-xl"><i class="fa-solid fa-circle-check text-yellow-400 mr-2"></i> Bepul kurslar</span>
-            <span class="glass px-4 py-2 rounded-xl"><i class="fa-solid fa-certificate text-yellow-400 mr-2"></i> Sertifikat</span>
-            <span class="glass px-4 py-2 rounded-xl"><i class="fa-solid fa-medal text-yellow-400 mr-2"></i> Olimpiada</span>
-            <span class="glass px-4 py-2 rounded-xl"><i class="fa-solid fa-book-open text-yellow-400 mr-2"></i> Kutubxona</span>
-            <span class="glass px-4 py-2 rounded-xl"><i class="fa-solid fa-briefcase text-yellow-400 mr-2"></i> Karyera</span>
+            <a href="kurs-python.html" class="glass px-4 py-2 rounded-xl hover:bg-white/20 transition"><i class="fa-solid fa-circle-check text-yellow-400 mr-2"></i> Bepul kurslar</a>
+            <a href="sertifikat.html" class="glass px-4 py-2 rounded-xl hover:bg-white/20 transition"><i class="fa-solid fa-certificate text-yellow-400 mr-2"></i> Sertifikat</a>
+            <a href="olimpiada.html" class="glass px-4 py-2 rounded-xl hover:bg-white/20 transition"><i class="fa-solid fa-medal text-yellow-400 mr-2"></i> Olimpiada</a>
+            <a href="kutubxona.html" class="glass px-4 py-2 rounded-xl hover:bg-white/20 transition"><i class="fa-solid fa-book-open text-yellow-400 mr-2"></i> Kutubxona</a>
+            <a href="chat.html" class="glass px-4 py-2 rounded-xl hover:bg-white/20 transition"><i class="fa-solid fa-comments text-yellow-400 mr-2"></i> Chat</a>
         </div>
 
-        <!-- Asosiy Tugma -->
-        <div class="flex justify-center items-center w-full max-w-md mb-20">
-            <a href="kurs-python.html" class="w-full bg-yellow-400 text-black px-10 py-5 rounded-2xl text-2xl font-bold shadow-2xl hover:scale-105 hover:bg-yellow-300 transition text-center">
-                BOSHLASH <i class="fa-solid fa-arrow-right ml-2"></i>
+        <div class="flex flex-wrap justify-center gap-4 w-full max-w-3xl mb-20">
+            <a href="kurs-python.html" class="flex-1 min-w-[220px] bg-yellow-400 text-black px-10 py-5 rounded-2xl text-2xl font-bold shadow-2xl hover:scale-105 hover:bg-yellow-300 transition text-center">PYTHON KURSI <i class="fa-solid fa-arrow-right ml-2"></i></a>
+            <a href="kurs-ingliz.html" class="flex-1 min-w-[220px] bg-pink-500 text-white px-10 py-5 rounded-2xl text-2xl font-bold shadow-2xl hover:scale-105 hover:bg-pink-400 transition text-center">INGLIZ TILI <i class="fa-solid fa-arrow-right ml-2"></i></a>
+            <a href="kurs-web.html" class="flex-1 min-w-[220px] bg-blue-500 text-white px-10 py-5 rounded-2xl text-2xl font-bold shadow-2xl hover:scale-105 hover:bg-blue-400 transition text-center">WEB DASTURLASH <i class="fa-solid fa-arrow-right ml-2"></i></a>
+        </div>
+
+        <!-- PASTKI KARTALAR -->
+        <div id="kurslar" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full pt-10">
+            <a href="kurs-python.html" class="glass-card p-6 rounded-3xl shadow-xl hover:scale-105 transition text-left flex items-center space-x-4">
+                <div class="w-12 h-12 bg-yellow-400 text-black rounded-2xl flex items-center justify-center text-xl font-bold shadow-md"><i class="fa-solid fa-laptop-code"></i></div>
+                <div><h3 class="font-bold text-lg text-gray-900">Bepul kurslar</h3><p class="text-xs text-gray-600">0 dan professionalgacha</p></div>
+            </a>
+            <a href="sertifikat.html" class="glass-card p-6 rounded-3xl shadow-xl hover:scale-105 transition text-left flex items-center space-x-4">
+                <div class="w-12 h-12 bg-pink-500 text-white rounded-2xl flex items-center justify-center text-xl font-bold shadow-md"><i class="fa-solid fa-award"></i></div>
+                <div><h3 class="font-bold text-lg text-gray-900">Sertifikat</h3><p class="text-xs text-gray-600">Kursni tugatib sertifikat oling</p></div>
+            </a>
+            <a href="kutubxona.html" class="glass-card p-6 rounded-3xl shadow-xl hover:scale-105 transition text-left flex items-center space-x-4">
+                <div class="w-12 h-12 bg-blue-500 text-white rounded-2xl flex items-center justify-center text-xl font-bold shadow-md"><i class="fa-solid fa-book-bookmark"></i></div>
+                <div><h3 class="font-bold text-lg text-gray-900">Kutubxona</h3><p class="text-xs text-gray-600">Minglab kitoblar va manbalar</p></div>
+            </a>
+            <a href="profil.html" class="glass-card p-6 rounded-3xl shadow-xl hover:scale-105 transition text-left flex items-center space-x-4">
+                <div class="w-12 h-12 bg-purple-600 text-white rounded-2xl flex items-center justify-center text-xl font-bold shadow-md"><i class="fa-solid fa-user"></i></div>
+                <div><h3 class="font-bold text-lg text-gray-900">Profil</h3><p class="text-xs text-gray-600">Ma'lumotlaringizni boshqaring</p></div>
             </a>
         </div>
-
-        <!-- PASTKI KARTALAR (XUSUSIYATLAR) -->
-        <div id="kurslar" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full pt-10">
-            <div class="glass-card p-6 rounded-3xl shadow-xl hover:scale-105 transition text-left flex items-center space-x-4">
-                <div class="w-12 h-12 bg-yellow-400 text-black rounded-2xl flex items-center justify-center text-xl font-bold shadow-md">
-                    <i class="fa-solid fa-laptop-code"></i>
-                </div>
-                <div>
-                    <h3 class="font-bold text-lg text-gray-900">Bepul kurslar</h3>
-                    <p class="text-xs text-gray-600">0 dan professionalgacha</p>
-                </div>
-            </div>
-
-            <div class="glass-card p-6 rounded-3xl shadow-xl hover:scale-105 transition text-left flex items-center space-x-4">
-                <div class="w-12 h-12 bg-pink-500 text-white rounded-2xl flex items-center justify-center text-xl font-bold shadow-md">
-                    <i class="fa-solid fa-award"></i>
-                </div>
-                <div>
-                    <h3 class="font-bold text-lg text-gray-900">Sertifikat</h3>
-                    <p class="text-xs text-gray-600">Rasmiy tasdiqlangan</p>
-                </div>
-            </div>
-
-            <div class="glass-card p-6 rounded-3xl shadow-xl hover:scale-105 transition text-left flex items-center space-x-4">
-                <div class="w-12 h-12 bg-blue-500 text-white rounded-2xl flex items-center justify-center text-xl font-bold shadow-md">
-                    <i class="fa-solid fa-book-bookmark"></i>
-                </div>
-                <div>
-                    <h3 class="font-bold text-lg text-gray-900">Kutubxona</h3>
-                    <p class="text-xs text-gray-600">Minglab kitoblar va manbalar</p>
-                </div>
-            </div>
-
-            <div class="glass-card p-6 rounded-3xl shadow-xl hover:scale-105 transition text-left flex items-center space-x-4">
-                <div class="w-12 h-12 bg-purple-600 text-white rounded-2xl flex items-center justify-center text-xl font-bold shadow-md">
-                    <i class="fa-solid fa-briefcase"></i>
-                </div>
-                <div>
-                    <h3 class="font-bold text-lg text-gray-900">Karyera</h3>
-                    <p class="text-xs text-gray-600">Ishga joylashish imkoniyati</p>
-                </div>
-            </div>
-        </div>
-
     </main>
 
-    <!-- FOOTER -->
-    <footer class="glass py-6 text-center text-sm text-gray-400">
-        <p>&copy; 2026 EduCore AI. Barcha huquqlar himoyalangan.</p>
-    </footer>
-
+    <footer class="glass py-6 text-center text-sm text-gray-400"><p>&copy; 2026 EduCore AI. Barcha huquqlar himoyalangan.</p></footer>
 </body>
 </html>
