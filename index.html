@@ -1,43 +1,55 @@
 <!DOCTYPE html>
-<html lang="uz"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EduCore AI – Eng Kuchli Platforma</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
-<style>
-  body { background: linear-gradient(rgba(0,0,0,0.9), rgba(30,0,60,0.8)), url('https://images.unsplash.com/photo-1524995997946-a0a336aa99e8?w=2000') fixed; color:white; }
-  .glass { backdrop-filter: blur(12px); background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); }
-</style>
-</head><body class="min-h-screen">
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduCore – Eng Kuchli Platforma</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body { 
+            background: linear-gradient(rgba(0,0,0,0.9), rgba(30,0,60,0.8)), url('https://images.unsplash.com/photo-1524995997946-a0a336aa99e8?w=2000') fixed; 
+            color: white; 
+        }
+        .glass { 
+            backdrop-filter: blur(12px); 
+            background: rgba(255,255,255,0.1); 
+            border: 1px solid rgba(255,255,255,0.2); 
+        }
+    </style>
+</head>
+<body class="min-h-screen">
 
-<nav class="glass fixed top-0 w-full z-50 shadow-xl">
-  <div class="container mx-auto px-6 py-5 flex justify-between items-center">
-    <h1 class="text-4xl font-bold bg-gradient-to-r from-yellow-400 to-pink-500 bg-clip-text text-transparent font-bold">Ta'lim Hub</h1>
-    <div class="space-x-6 text-lg">
-      <a href="#kurslar" class="hover:text-yellow-300">Kurslar</a>
-      <a href="kutubxona.html">Kutubxona</a>
-      <a href="masalalar.html">Masalalar</a>
-      <a href="olimpiada.html">Olimpiadalar</a>
-      <a href="chat.html">Chat</a>
-      <a href="profil.html">Profil</a>
-      <a href="login.html" class="bg-yellow-400 text-black px-8 py-3 rounded-full font-bold">Kirish</a>
+    <nav class="glass fixed top-0 w-full z-50 shadow-xl">
+        <div class="container mx-auto px-6 py-5 flex justify-between items-center">
+            <h1 class="text-4xl font-bold bg-gradient-to-r from-yellow-400 to-pink-500 bg-clip-text text-transparent font-bold">EduCore</h1>
+            <div class="space-x-6 text-lg flex items-center">
+                <a href="#kurslar" class="hover:text-yellow-300">Kurslar</a>
+                <a href="kutubxona.html" class="hover:text-yellow-300">Kutubxona</a>
+                <a href="masalalar.html" class="hover:text-yellow-300">Masalalar</a>
+                <a href="olimpiada.html" class="hover:text-yellow-300">Olimpiadalar</a>
+                <a href="profil.html" class="hover:text-yellow-300">Profil</a>
+                <a href="login.html" class="bg-yellow-400 text-black px-8 py-3 rounded-full font-bold hover:bg-yellow-300 transition">Kirish</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="h-screen flex items-center justify-center text-center px-6">
+        <div>
+            <h1 class="text-6xl md:text-8xl font-extrabold mb-8">EduCore AI<br><span class="text-yellow-400">2026</span></h1>
+            <p class="text-3xl mb-12">Bepul kurslar • Sertifikat • Olimpiada • Kutubxona</p>
+            <a href="kurs-python.html" class="bg-yellow-400 text-black px-16 py-8 rounded-full text-4xl font-bold shadow-2xl hover:scale-110 transition inline-block">BOSHLASH</a>
+        </div>
     </div>
-  </div>
-</nav>
 
-<div class="h-screen flex items-center justify-center text-center px-6">
-  <div>
-    <h1 class="text-6xl md:text-8xl font-extrabold mb-8">EduCore AI<br><span class="text-yellow-400">2026</span></h1>
-    <p class="text-3xl mb-12">Bepul kurslar • Sertifikat • Olimpiada • Kutubxona</p>
-    <a href="kurs-python.html" class="bg-yellow-400 text-black px-16 py-8 rounded-full text-4xl font-bold shadow-2xl hover:scale-110 transition">BOSHLASH</a>
-  </div>
-</div>
+    <section id="kurslar" class="py-32 container mx-auto px-6 text-center">
+        <h2 class="text-7xl font-bold mb-20 text-yellow-400">KURSLAR</h2>
+        <div class="grid lg:grid-cols-3 gap-12">
+            <a href="kurs-python.html" class="glass p-12 rounded-3xl hover:scale-105 transition text-2xl font-bold block">Python 0 dan Pro</a>
+            <a href="kurs-web.html" class="glass p-12 rounded-3xl hover:scale-105 transition text-2xl font-bold block">Web Dasturlash</a>
+            <a href="kurs-ingliz.html" class="glass p-12 rounded-3xl hover:scale-105 transition text-2xl font-bold block">Ingliz tili A1-C1</a>
+        </div>
+    </section>
 
-<section id="kurslar" class="py-32 container mx-auto px-6 text-center">
-  <h2 class="text-7xl font-bold mb-20 text-yellow-400">KURSLAR</h2>
-  <div class="grid lg:grid-cols-3 gap-12">
-    <a href="kurs-python.html" class="glass p-12 rounded-3xl hover:scale-105 transition text-2xl font-bold">Python 0 dan Pro</a>
-    <a href="kurs-web.html" class="glass p-12 rounded-3xl hover:scale-105 transition text-2xl font-bold">Web Dasturlash</a>
-    <a href="kurs-ingliz.html" class="glass p-12 rounded-3xl hover:scale-105 transition text-2xl font-bold">Ingliz tili A1-C1</a>
-  </div>
-</section>
-</body></html>
+</body>
+</html>
