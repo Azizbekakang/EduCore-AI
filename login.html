@@ -1,113 +1,85 @@
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kirish | Talim Hub</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Edu-AI | Kirish</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+  <style>
+    body {
+      background: linear-gradient(rgba(0,0,0,.8), rgba(17,24,39,.95)),
+                  url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=2000') center/cover fixed;
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .glass { background: rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.14); backdrop-filter: blur(12px); }
+  </style>
 </head>
-<body class="bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900 min-h-screen flex items-center justify-center p-4">
+<body class="min-h-screen flex items-center justify-center p-6">
+  <div class="glass max-w-md w-full rounded-3xl p-8 shadow-2xl">
+    <div class="text-center mb-8">
+      <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-tr from-yellow-400 to-pink-500 text-black text-2xl font-black mb-4">AI</div>
+      <h1 class="text-3xl font-black text-yellow-300">Edu-AI</h1>
+      <p class="text-gray-300 mt-2">Kirish va ta’limni boshlang</p>
+    </div>
 
-  <div class="bg-white/10 backdrop-blur-xl rounded-3xl shadow-2xl p-10 w-full max-w-md text-white">
-    <h1 class="text-5xl font-bold text-center mb-2 text-yellow-400">TALIM HUB</h1>
-    <p class="text-center mb-10 text-lg opacity-90">Bilim endi qo‘lingizda</p>
+    <form id="loginForm" class="space-y-5">
+      <div>
+        <label class="block text-sm text-gray-300 mb-2">Ism</label>
+        <input id="name" type="text" required placeholder="Ismingizni kiriting" class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/10 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-400" />
+      </div>
+      <div>
+        <label class="block text-sm text-gray-300 mb-2">Email</label>
+        <input id="email" type="email" required placeholder="example@mail.com" class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/10 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-400" />
+      </div>
+      <div>
+        <label class="block text-sm text-gray-300 mb-2">Parol</label>
+        <input id="password" type="password" required placeholder="••••••••" class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/10 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-400" />
+      </div>
 
-    <input type="text" id="name" placeholder="Ismingiz" class="w-full p-4 mb-4 rounded-xl bg-white/20 text-white placeholder-white/70 focus:outline-none focus:ring-4 focus:ring-yellow-400">
-    <input type="text" id="phone" placeholder="+998 XX XXX XX XX" class="w-full p-4 mb-4 rounded-xl bg-white/20 text-white placeholder-white/70 focus:outline-none focus:ring-4 focus:ring-yellow-400">
-    <input type="email" id="email" placeholder="Email kiriting" class="w-full p-4 mb-4 rounded-xl bg-white/20 text-white placeholder-white/70 focus:outline-none focus:ring-4 focus:ring-yellow-400">
-    <input type="password" id="pass" placeholder="Parol" class="w-full p-4 mb-8 rounded-xl bg-white/20 text-white placeholder-white/70 focus:outline-none focus:ring-4 focus:ring-yellow-400">
+      <button type="submit" class="w-full bg-yellow-400 text-black font-bold py-3 rounded-xl hover:bg-yellow-300 transition">
+        <i class="fa-solid fa-right-to-bracket mr-2"></i>Kirish
+      </button>
+    </form>
 
-    <button onclick="register()" class="w-full bg-yellow-400 text-black font-bold py-5 rounded-xl text-2xl hover:bg-yellow-300 transition shadow-lg mb-4">
-      RO‘YXATDAN O‘TISH
-    </button>
-    <button onclick="login()" class="w-full bg-green-600 text-white font-bold py-5 rounded-xl text-2xl hover:bg-green-500 transition shadow-lg">
-      KIRISH
-    </button>
+    <p id="message" class="mt-5 text-sm text-red-300 hidden"></p>
 
-    <p class="text-center mt-6 text-sm opacity-70">
-      Admin kirish: <span class="text-yellow-300">admin1</span> | <span class="text-yellow-300">admin_ploi</span>
-    </p>
+    <div class="mt-6 text-center text-sm text-gray-300">
+      Akkount yo‘qmi? <a href="index.html" class="text-yellow-300 hover:underline">Bosh sahifaga qaytish</a>
+    </div>
   </div>
 
   <script>
-    // Barcha foydalanuvchilar
-    let users = JSON.parse(localStorage.getItem('talimhub_users') || '[]');
+    const form = document.getElementById('loginForm');
+    const message = document.getElementById('message');
 
-    // Ro‘yxatdan o‘tish
-    function register() {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
       const name = document.getElementById('name').value.trim();
-      const phone = document.getElementById('phone').value.trim();
-      const email = document.getElementById('email').value.trim().toLowerCase();
-      const pass = document.getElementById('pass').value;
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value.trim();
 
-      if (!name || !phone || !email || !pass) {
-        alert("Iltimos, barcha maydonlarni to‘ldiring!");
+      if (!name || !email || !password) {
+        message.textContent = 'Iltimos, hamma maydonlarni to‘ldiring.';
+        message.classList.remove('hidden');
         return;
       }
 
-      // Email allaqachon borligini tekshirish
-      if (users.find(u => u.email === email)) {
-        alert("Bu email allaqachon ro‘yxatdan o‘tgan!");
-        return;
-      }
+      const user = { name, email, password };
+      localStorage.setItem('currentUser', JSON.stringify(user));
+      sessionStorage.setItem('currentUser', JSON.stringify(user));
 
-      // 6 xonali unikal ID yaratish
-      const id = Math.floor(100000 + Math.random() * 900000);
+      message.textContent = 'Muvaffaqiyatli kirdingiz!';
+      message.classList.remove('hidden');
+      message.classList.remove('text-red-300');
+      message.classList.add('text-green-300');
 
-      // Yangi foydalanuvchi qo‘shish
-      users.push({
-        id: id,
-        name: name,
-        phone: phone,
-        email: email,
-        pass: pass,
-        role: "user",
-        joined: new Date().toLocaleDateString('uz-UZ')
-      });
-
-      localStorage.setItem('talimhub_users', JSON.stringify(users));
-      sessionStorage.setItem('currentUser', JSON.stringify({id, name, email, role: "user"}));
-
-      alert(`Tabriklaymiz, ${name}!\nSiz muvaffaqiyatli ro‘yxatdan o‘tdingiz!\nSizning ID: ${id}`);
-      location.href = "index.html";
-    }
-
-    // Kirish
-    function login() {
-      const email = document.getElementById('email').value.trim().toLowerCase();
-      const pass = document.getElementById('pass').value;
-
-      if (!email || !pass) {
-        alert("Email va parolni kiriting!");
-        return;
-      }
-
-      // Oddiy foydalanuvchi
-      const user = users.find(u => u.email === email && u.pass === pass);
-
-      // Admin tekshiruvi
-      if (email === "admin1" && pass === "admin_ploi") {
-        sessionStorage.setItem('currentUser', JSON.stringify({name: "Admin", email: "admin1", role: "admin"}));
-        location.href = "adminpanel.html";
-        return;
-      }
-
-      if (user) {
-        sessionStorage.setItem('currentUser', JSON.stringify(user));
-        alert(`Xush kelibsiz, ${user.name}!`);
-        location.href = "index.html";
-      } else {
-        alert("Email yoki parol noto‘g‘ri!");
-      }
-    }
-
-    // Sahifa yuklanganda avto kirish (agar oldin kirgan bo‘lsa)
-    window.onload = function() {
-      if (sessionStorage.getItem('currentUser')) {
-        location.href = "index.html";
-      }
-    }
+      setTimeout(() => {
+        window.location.href = 'index.html';
+      }, 800);
+    });
   </script>
 </body>
 </html>
