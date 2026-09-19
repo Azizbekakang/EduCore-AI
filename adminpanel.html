@@ -1,10 +1,9 @@
-Azizbek Abduraimov, [12/6/2025 6:47 PM]
 <!doctype html>
 <html lang="uz">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Admin Panel — Talim Hub (Olimpiada boshqaruvi)</title>
+  <title>Admin Panel — EduCore (Olimpiada boshqaruvi)</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-slate-900 text-slate-100 min-h-screen">
@@ -33,7 +32,7 @@ Azizbek Abduraimov, [12/6/2025 6:47 PM]
       <!-- SELECT OLYMPIAD & PUBLISH -->
       <div class="bg-white/5 p-6 rounded-lg">
         <h2 class="text-xl font-semibold mb-3">Olimpiadani tanlash</h2>
-        <select id="selOlimp" class="w-full p-2 rounded bg-transparent border border-white/10 mb-3">
+        <select id="selOlimp" class="w-full p-2 rounded bg-transparent border border-white/10 mb-3 text-black">
           <option value="">— Tanlang —</option>
         </select>
         <div id="olDetails" class="text-sm text-slate-300 mb-3"></div>
@@ -61,7 +60,6 @@ Azizbek Abduraimov, [12/6/2025 6:47 PM]
     <section class="mt-6 grid md:grid-cols-2 gap-6">
       <div class="bg-white/5 p-6 rounded-lg">
         <h3 class="text-lg font-semibold mb-3">Masalalar (tanlangan olimpiada uchun)</h3>
-
         <div class="mb-3 flex gap-2">
           <input id="qText" placeholder="Masala matni" class="flex-1 p-2 rounded bg-transparent border border-white/10"/>
         </div>
@@ -69,13 +67,11 @@ Azizbek Abduraimov, [12/6/2025 6:47 PM]
           <input id="qAns" placeholder="To'g'ri javob (matn yoki raqam)" class="flex-1 p-2 rounded bg-transparent border border-white/10"/>
           <button id="addQ" class="bg-emerald-500 px-4 py-2 rounded">Qo'shish</button>
         </div>
-
         <div class="text-sm text-slate-300 mb-2">Masalalar ro‘yxati (A, B, C...)</div>
         <div id="questionsList" class="space-y-2 max-h-80 overflow-auto"></div>
       </div>
 
-Azizbek Abduraimov, [12/6/2025 6:47 PM]
-<div class="bg-white/5 p-6 rounded-lg">
+      <div class="bg-white/5 p-6 rounded-lg">
         <h3 class="text-lg font-semibold mb-3">Ishtirokchilar & Javoblar</h3>
         <div class="mb-3">
           <button id="btnRefreshSubs" class="bg-cyan-600 px-3 py-2 rounded">Yangilash</button>
@@ -91,21 +87,19 @@ Azizbek Abduraimov, [12/6/2025 6:47 PM]
   </div>
 
 <script>
-/* ========= Helpers ========= */
 const LS_KEY = 'olimpiadas';
 function loadData(){ return JSON.parse(localStorage.getItem(LS_KEY) || '[]'); }
 function saveData(d){ localStorage.setItem(LS_KEY, JSON.stringify(d)); }
 
-/* ======= Init ======= */
-function fmtNow(){ return new Date().toLocaleString(); }
 function renderSelect(){
   const sel = document.getElementById('selOlimp');
   const data = loadData();
   sel.innerHTML = '<option value="">— Tanlang —</option>';
-  data.forEach((o,i)=> sel.innerHTML += <option value="${i}">${o.name} ${o.published? ' (published)':''}</option>);
+  data.forEach((o,i)=> sel.innerHTML += `<option value="${i}">${o.name} ${o.published? ' (published)':''}</option>`);
   document.getElementById('statOlimps').innerText = 'Olimpiadalar: ' + data.length;
   document.getElementById('statQuestions').innerText = 'Jami savollar: ' + data.reduce((s,o)=>s+ (o.tasks?.length||0),0);
 }
+
 function renderStats(){
   const data = loadData();
   const users = data.reduce((s,o)=> s + (o.users?.length||0), 0);
@@ -114,19 +108,17 @@ function renderStats(){
   document.getElementById('statQuestions').innerText = 'Jami savollar: ' + data.reduce((s,o)=>s+ (o.tasks?.length||0),0);
 }
 
-/* ======= Create Olimpiad ======= */
 document.getElementById('createOlimp').addEventListener('click', ()=>{
   const name = document.getElementById('olName').value.trim();
   const start = document.getElementById('olStart').value.trim();
   const end = document.getElementById('olEnd').value.trim();
-  if(!name  !start  !end){ return alert('Iltimos: nom, boshlanish va tugashni kiriting'); }
+  if(!name || !start || !end){ return alert('Iltimos: nom, boshlanish va tugashni kiriting'); }
   const d = loadData();
   d.push({ name, start, end, tasks: [], users: [], published: false, createdAt: new Date().toISOString() });
   saveData(d); renderSelect(); renderStats(); alert('Olimpiada yaratildi');
   document.getElementById('olName').value=''; document.getElementById('olStart').value=''; document.getElementById('olEnd').value='';
 });
 
-/* ======= Duplicate sample (quick fill) ======= */
 document.getElementById('duplicateSample').addEventListener('click', ()=>{
   const d = loadData();
   const sample = {
@@ -138,38 +130,36 @@ document.getElementById('duplicateSample').addEventListener('click', ()=>{
     published: false,
     createdAt: new Date().toISOString()
   };
-  // add 10 sample questions
   for(let i=0;i<10;i++){
-    sample.tasks.push({ name: String.fromCharCode(65+i), text: Namuna savol ${i+1}, answer: ${i+1} });
+    sample.tasks.push({ name: String.fromCharCode(65+i), text: `Namuna savol ${i+1}`, answer: `${i+1}` });
   }
   d.push(sample); saveData(d); renderSelect(); renderStats();
   alert('Namuna olimpiada qo\'shildi');
 });
 
-/* ======= Select change ======= */
 document.getElementById('selOlimp').addEventListener('change', e=>{
   const idx = e.target.value;
   if(idx === '') { clearEditor(); return; }
   const data = loadData();
   const ol = data[idx];
-  document.getElementById('olDetails').innerHTML = <strong>${ol.name}</strong><br> ${ol.start} → ${ol.end}<br> Savollar: ${ol.tasks.length} — Ishtirokchilar: ${ol.users.length}<br>Published: ${ol.published? 'Ha':'Yo\'q'};
+  document.getElementById('olDetails').innerHTML = `<strong>${ol.name}</strong><br>${ol.start} → ${ol.end}<br>Savollar: ${ol.tasks.length} — Ishtirokchilar: ${ol.users.length}<br>Published: ${ol.published? 'Ha':'Yo\'q'}`;
   renderQuestions(idx);
 });
 
-/* ======= Publish / Unpublish / Delete ======= */
 document.getElementById('btnPublish').addEventListener('click', ()=>{
-
-Azizbek Abduraimov, [12/6/2025 6:47 PM]
-const idx = document.getElementById('selOlimp').value;
+  const idx = document.getElementById('selOlimp').value;
+  if(idx==='') return alert('Olimpiada tanlang');
   if(!confirm('Olimpiadani nashr qilmoqchimisiz?')) return;
-  const d = loadData(); if(idx==='') return alert('Olimpiada tanlang');
+  const d = loadData();
   d[idx].published = true; saveData(d); renderSelect(); renderStats(); alert('Published');
 });
+
 document.getElementById('btnUnpublish').addEventListener('click', ()=>{
   const idx = document.getElementById('selOlimp').value;
   if(!idx) return alert('Olimpiada tanlang');
   const d = loadData(); d[idx].published = false; saveData(d); renderSelect(); renderStats(); alert('Unpublished');
 });
+
 document.getElementById('btnDeleteO').addEventListener('click', ()=>{
   const idx = document.getElementById('selOlimp').value;
   if(!idx) return alert('Olimpiada tanlang');
@@ -177,18 +167,18 @@ document.getElementById('btnDeleteO').addEventListener('click', ()=>{
   const d = loadData(); d.splice(idx,1); saveData(d); renderSelect(); renderStats(); clearEditor(); alert('O\'chirildi');
 });
 
-/* ======= Questions editor ======= */
 function clearEditor(){
   document.getElementById('qText').value=''; document.getElementById('qAns').value='';
   document.getElementById('questionsList').innerHTML = '<div class="text-slate-400">Olimpiada tanlanmagan</div>';
   document.getElementById('olDetails').innerHTML = '';
 }
+
 function renderQuestions(olIdx){
   const list = document.getElementById('questionsList');
   const d = loadData();
   if(!d[olIdx]) return clearEditor();
   const tasks = d[olIdx].tasks || [];
-  list.innerHTML = tasks.map((t,i)=>
+  list.innerHTML = tasks.map((t,i)=>`
     <div class="flex items-start justify-between gap-2 p-2 bg-white/5 rounded">
       <div>
         <div class="font-bold">${String.fromCharCode(65+i)}. ${t.text}</div>
@@ -199,10 +189,9 @@ function renderQuestions(olIdx){
         <button onclick="delQ(${olIdx},${i})" class="bg-red-600 px-3 py-1 rounded text-xs">Oʻchirish</button>
       </div>
     </div>
-  ).join('') || '<div class="text-slate-400">Hozircha savollar yo‘q.</div>';
+  `).join('') || '<div class="text-slate-400">Hozircha savollar yo‘q.</div>';
 }
 
-/* Add question */
 document.getElementById('addQ').addEventListener('click', ()=>{
   const idx = document.getElementById('selOlimp').value;
   if(idx === '') return alert('Olimpiadani tanlang');
@@ -218,7 +207,6 @@ document.getElementById('addQ').addEventListener('click', ()=>{
   document.getElementById('qText').value=''; document.getElementById('qAns').value='';
 });
 
-/* Edit question */
 function editQ(olIdx, qIdx){
   const d = loadData();
   const q = d[olIdx].tasks[qIdx];
@@ -231,31 +219,21 @@ function editQ(olIdx, qIdx){
   saveData(d); renderQuestions(olIdx); renderSelect(); renderStats();
 }
 
-/* Delete question */
 function delQ(olIdx, qIdx){
   if(!confirm('Bu savolni o\'chirishni tasdiqlaysizmi?')) return;
   const d = loadData();
   d[olIdx].tasks.splice(qIdx,1);
-  // renumerate letters
   d[olIdx].tasks = d[olIdx].tasks.map((t,i)=> ({...t, name: String.fromCharCode(65+i)}));
   saveData(d); renderQuestions(olIdx); renderSelect(); renderStats();
 }
 
-/* ======= Submissions (simulated) ======= */
-/* Submissions expected shape saved under 'subs' key:
-   [{olIdx, userId, userName, answers:{0:'ans',1:'ans',...}, score, when}]
-*/
-function loadSubs(){
-  return JSON.parse(localStorage.getItem('subs') || '[]');
-}
-function saveSubs(s){ localStorage.setItem('subs', JSON.stringify(s)); }
+function loadSubs(){ return JSON.parse(localStorage.getItem('subs') || '[]'); }
 
-Azizbek Abduraimov, [12/6/2025 6:47 PM]
 document.getElementById('btnRefreshSubs').addEventListener('click', renderSubs);
 document.getElementById('btnExportSubs').addEventListener('click', ()=>{
   const subs = loadSubs();
   if(!subs.length) return alert('Submissions yo\'q');
-  const csv = ['olimpiada,userId,userName,score,when'].concat(subs.map(s=>${s.olIdx},"${s.userId}","${s.userName}",${s.score},"${s.when}")).join('\n');
+  const csv = ['olimpiada,userId,userName,score,when'].concat(subs.map(s=>`${s.olIdx},"${s.userId}","${s.userName}",${s.score},"${s.when}"`)).join('\n');
   const blob = new Blob([csv], {type:'text/csv'}); const url = URL.createObjectURL(blob);
   const a = document.createElement('a'); a.href = url; a.download = 'subs.csv'; a.click(); URL.revokeObjectURL(url);
 });
@@ -264,29 +242,26 @@ function renderSubs(){
   const subs = loadSubs();
   const list = document.getElementById('subsList');
   if(!subs.length) { list.innerHTML = '<div class="text-slate-400">Hozircha topshiruvlar yo‘q.</div>'; return; }
-  list.innerHTML = subs.map(s=>
+  list.innerHTML = subs.map((s, idx)=>`
     <div class="p-2 bg-white/5 rounded mb-2">
       <div class="text-sm">Olimpiada: ${s.olIdx} — Foydalanuvchi: <strong>${s.userName}</strong> (${s.userId})</div>
       <div class="text-xs text-slate-300">Ball: ${s.score} — ${s.when}</div>
       <div class="mt-2 text-xs">
-        <button onclick='viewSubmission(${JSON.stringify(s).replaceAll("'", "\\'").replaceAll('"','&quot;')})' class="bg-indigo-600 px-2 py-1 rounded text-xs">Ko‘rish</button>
+        <button onclick="viewSubDetail(${idx})" class="bg-indigo-600 px-2 py-1 rounded text-xs">Ko‘rish</button>
       </div>
     </div>
-  ).join('');
+  `).join('');
 }
 
-/* view submission detail */
-function viewSubmission(serialized){
-  // serialized is a JSON-like string; better to reuse index-based rendering in prod
-  // we'll just alert JSON here
-  alert(JSON.stringify(serialized, null, 2));
+function viewSubDetail(idx){
+  const subs = loadSubs();
+  alert(JSON.stringify(subs[idx], null, 2));
 }
 
-/* ======= Ranking view & utils ======= */
 document.getElementById('btnShowRank').addEventListener('click', ()=>{
   const rank = JSON.parse(localStorage.getItem('ranking') || '[]');
   if(!rank.length) return alert('Reyting yo‘q');
-  const html = rank.map((r,i)=> ${i+1}. ${r.name} — ${r.score}).join('\n');
+  const html = rank.map((r,i)=> `${i+1}. ${r.name} — ${r.score}`).join('\n');
   alert('Reyting:\n\n' + html);
 });
 document.getElementById('btnClearRank').addEventListener('click', ()=>{
@@ -294,24 +269,20 @@ document.getElementById('btnClearRank').addEventListener('click', ()=>{
   localStorage.removeItem('ranking'); alert('Tozalandi');
 });
 
-/* ======= Export all data JSON ======= */
 document.getElementById('btnExport').addEventListener('click', ()=>{
   const data = { olimpiadas: loadData(), subs: loadSubs(), ranking: JSON.parse(localStorage.getItem('ranking')||'[]') };
   const blob = new Blob([JSON.stringify(data, null, 2)], {type:'application/json'}); const url = URL.createObjectURL(blob);
-  const a = document.createElement('a'); a.href = url; a.download = 'talimhub_admin_export.json'; a.click(); URL.revokeObjectURL(url);
+  const a = document.createElement('a'); a.href = url; a.download = 'educore_admin_export.json'; a.click(); URL.revokeObjectURL(url);
 });
 
-/* ======= Clear all ======= */
 document.getElementById('btnClearAll').addEventListener('click', ()=>{
   if(!confirm('Barcha olimpiada, savol, topshiruv va reytinglarni o\'chirishni tasdiqlaysizmi?')) return;
   localStorage.removeItem(LS_KEY); localStorage.removeItem('subs'); localStorage.removeItem('ranking');
   renderSelect(); renderStats(); clearEditor(); document.getElementById('subsList').innerHTML=''; alert('Barcha ma\'lumot o\'chirildi');
 });
 
-/* ======= On load ======= */
 renderSelect(); renderStats(); clearEditor(); renderSubs();
 
-/* Auto-save helper for demo: create a sample olimpiada if none */
 if(loadData().length === 0){
   const sample = [{
     name: 'Demo Olympiad',
