@@ -1,77 +1,12 @@
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EduCore – Yangi Zamon, Yuksak Bilim</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
-    <style>
-        body { background: linear-gradient(rgba(0,0,0,.85),rgba(20,0,40,.92)),url('https://images.unsplash.com/photo-1524995997946-a0a336aa99e8?w=2000') center/cover fixed; color:white; font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif; }
-        .glass { backdrop-filter:blur(16px); background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.15); }
-        .glass-card { backdrop-filter:blur(12px); background:rgba(255,255,255,.94); color:#111; }
-    </style>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>EduCore AI | Ta'lim platformasi</title>
+<script src="https://cdn.tailwindcss.com"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+<style>body{background:linear-gradient(rgba(0,0,0,.84),rgba(20,0,40,.92)),url('https://images.unsplash.com/photo-1524995997946-a0a336aa99e8?w=2000') center/cover fixed;color:#fff;font-family:Segoe UI,sans-serif}.glass{background:#ffffff12;border:1px solid #ffffff26;backdrop-filter:blur(16px)}.glass-card{background:#fffffff2;color:#111}</style>
 </head>
 <body class="min-h-screen flex flex-col">
-    <nav class="glass fixed top-0 w-full z-50 shadow-2xl">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="index.html" class="flex items-center space-x-3" aria-label="EduCore bosh sahifa">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-yellow-400 to-pink-500 flex items-center justify-center font-bold text-black text-xl">EC</div>
-                <span class="text-2xl md:text-3xl font-extrabold bg-gradient-to-r from-yellow-400 to-pink-500 bg-clip-text text-transparent">EduCore</span>
-            </a>
-            <div class="hidden lg:flex items-center space-x-5 text-base font-medium">
-                <a href="#kurslar" class="hover:text-yellow-400 transition"><i class="fa-solid fa-graduation-cap mr-1"></i>Kurslar</a>
-                <a href="kutubxona.html" class="hover:text-yellow-400 transition"><i class="fa-solid fa-book mr-1"></i>Kutubxona</a>
-                <a href="masalalar.html" class="hover:text-yellow-400 transition"><i class="fa-solid fa-code mr-1"></i>Masalalar</a>
-                <a href="olimpiada.html" class="hover:text-yellow-400 transition"><i class="fa-solid fa-trophy mr-1"></i>Olimpiadalar</a>
-                <a href="reyting.html" class="hover:text-yellow-400 transition"><i class="fa-solid fa-ranking-star mr-1"></i>Reyting</a>
-                <a href="chat.html" class="hover:text-yellow-400 transition"><i class="fa-solid fa-comments mr-1"></i>Chat</a>
-            </div>
-            <a href="login.html" class="bg-yellow-400 text-black px-6 py-2.5 rounded-full font-bold hover:bg-yellow-300 transition"><i class="fa-solid fa-right-to-bracket mr-2"></i>Kirish</a>
-        </div>
-    </nav>
-
-    <main class="container mx-auto px-6 pt-36 pb-20 flex-grow text-center">
-        <div class="mb-8 inline-flex items-center gap-2 glass px-6 py-2 rounded-full text-yellow-300 text-sm font-semibold uppercase"><i class="fa-solid fa-award text-yellow-400"></i>Kelajak Ta'lim Platformasi • 2026</div>
-        <h1 class="text-5xl md:text-8xl font-black tracking-tight mb-6">EduCore <span class="text-yellow-400">AI</span></h1>
-        <p class="text-xl md:text-3xl text-gray-300 font-light mb-10">Yangi zamon, yuksak bilim</p>
-
-        <div class="flex flex-wrap justify-center gap-4 mb-12 text-sm md:text-base font-medium">
-            <a href="#kurslar" class="glass px-4 py-2 rounded-xl hover:bg-white/20 transition"><i class="fa-solid fa-circle-check text-yellow-400 mr-2"></i>Bepul kurslar</a>
-            <a href="sertifikat.html" class="glass px-4 py-2 rounded-xl hover:bg-white/20 transition"><i class="fa-solid fa-certificate text-yellow-400 mr-2"></i>Sertifikat</a>
-            <a href="olimpiada.html" class="glass px-4 py-2 rounded-xl hover:bg-white/20 transition"><i class="fa-solid fa-medal text-yellow-400 mr-2"></i>Olimpiada</a>
-            <a href="kutubxona.html" class="glass px-4 py-2 rounded-xl hover:bg-white/20 transition"><i class="fa-solid fa-book-open text-yellow-400 mr-2"></i>Kutubxona</a>
-        </div>
-
-        <a href="#kurslar" class="inline-block bg-yellow-400 text-black px-12 py-5 rounded-2xl text-2xl font-bold shadow-2xl hover:scale-105 hover:bg-yellow-300 transition mb-20">BOSHLASH <i class="fa-solid fa-arrow-down ml-2"></i></a>
-
-        <section id="kurslar" class="scroll-mt-28 pt-8">
-            <h2 class="text-4xl md:text-5xl font-bold text-yellow-300 mb-4">Mavjud kurslar</h2>
-            <p class="text-gray-300 text-lg mb-10">O‘zingizga mos kursni tanlang va o‘qishni boshlang</p>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
-                <a href="kurs-python.html" class="glass-card p-7 rounded-3xl shadow-xl hover:-translate-y-2 transition block">
-                    <div class="w-16 h-16 bg-yellow-400 rounded-2xl flex items-center justify-center text-3xl mb-5"><i class="fa-brands fa-python"></i></div>
-                    <h3 class="font-bold text-2xl">Python dasturlash</h3><p class="text-gray-600 mt-2">0 dan professional darajagacha. Testlar va progress tizimi.</p>
-                    <span class="inline-block mt-5 bg-yellow-400 px-5 py-2 rounded-xl font-bold">Kursga kirish <i class="fa-solid fa-arrow-right ml-2"></i></span>
-                </a>
-                <a href="kurs-ingliz.html" class="glass-card p-7 rounded-3xl shadow-xl hover:-translate-y-2 transition block">
-                    <div class="w-16 h-16 bg-pink-500 text-white rounded-2xl flex items-center justify-center text-3xl mb-5"><i class="fa-solid fa-language"></i></div>
-                    <h3 class="font-bold text-2xl">Ingliz tili A1–C1</h3><p class="text-gray-600 mt-2">Video darslar, lug‘at va har bir dars uchun testlar.</p>
-                    <span class="inline-block mt-5 bg-pink-500 text-white px-5 py-2 rounded-xl font-bold">Kursga kirish <i class="fa-solid fa-arrow-right ml-2"></i></span>
-                </a>
-                <a href="kurs-web.html" class="glass-card p-7 rounded-3xl shadow-xl hover:-translate-y-2 transition block">
-                    <div class="w-16 h-16 bg-blue-500 text-white rounded-2xl flex items-center justify-center text-3xl mb-5"><i class="fa-solid fa-code"></i></div>
-                    <h3 class="font-bold text-2xl">Web dasturlash</h3><p class="text-gray-600 mt-2">HTML, CSS, JavaScript va zamonaviy web asoslari.</p>
-                    <span class="inline-block mt-5 bg-blue-500 text-white px-5 py-2 rounded-xl font-bold">Kursga kirish <i class="fa-solid fa-arrow-right ml-2"></i></span>
-                </a>
-            </div>
-        </section>
-
-        <section class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-10 text-left">
-            <a href="sertifikat.html" class="glass-card p-6 rounded-3xl shadow-xl hover:scale-105 transition flex items-center gap-4"><div class="w-14 h-14 bg-pink-500 text-white rounded-2xl flex items-center justify-center text-2xl"><i class="fa-solid fa-award"></i></div><div><h3 class="font-bold text-xl">Sertifikat</h3><p class="text-gray-600">Sertifikat sahifasini ochish</p></div></a>
-            <a href="kutubxona.html" class="glass-card p-6 rounded-3xl shadow-xl hover:scale-105 transition flex items-center gap-4"><div class="w-14 h-14 bg-blue-500 text-white rounded-2xl flex items-center justify-center text-2xl"><i class="fa-solid fa-book"></i></div><div><h3 class="font-bold text-xl">Kutubxona</h3><p class="text-gray-600">Kitoblar va demo ko‘rish</p></div></a>
-        </section>
-    </main>
-    <footer class="glass py-6 text-center text-sm text-gray-400">© 2026 EduCore AI. Barcha huquqlar himoyalangan.</footer>
-</body>
-</html>
+<nav class="glass fixed top-0 w-full z-50"><div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center"><a href="index.html" class="flex items-center gap-3"><span class="w-10 h-10 rounded-xl bg-gradient-to-tr from-yellow-400 to-pink-500 flex items-center justify-center font-bold text-black">EC</span><b class="text-2xl text-yellow-300">EduCore</b></a><div class="hidden lg:flex gap-5 text-sm"><a href="mavjud-kurslar.html">Kurslar</a><a href="kutubxona.html">Kutubxona</a><a href="masalalar.html">Masalalar</a><a href="olimpiada.html">Olimpiada</a><a href="reyting.html">Reyting</a><a href="profil.html">Profil</a></div><a href="login.html" class="bg-yellow-400 text-black px-5 py-2 rounded-full font-bold">Kirish</a></div></nav>
+<main class="max-w-7xl mx-auto px-6 pt-36 pb-16 flex-grow text-center"><div class="inline-block glass px-5 py-2 rounded-full text-yellow-300 mb-7">Kelajak ta'lim platformasi • 2026</div><h1 class="text-6xl md:text-8xl font-black mb-5">EduCore <span class="text-yellow-400">AI</span></h1><p class="text-2xl md:text-3xl text-gray-300 mb-10">Yangi zamon, yuksak bilim</p><div class="flex flex-wrap justify-center gap-3 mb-12"><a href="mavjud-kurslar.html" class="glass px-4 py-2 rounded-xl hover:bg-white/20"><i class="fa-solid fa-graduation-cap text-yellow-400 mr-2"></i>Bepul kurslar</a><a href="sertifikat.html" class="glass px-4 py-2 rounded-xl hover:bg-white/20"><i class="fa-solid fa-certificate text-yellow-400 mr-2"></i>Sertifikat</a><a href="olimpiada.html" class="glass px-4 py-2 rounded-xl hover:bg-white/20"><i class="fa-solid fa-trophy text-yellow-400 mr-2"></i>Olimpiada</a><a href="kutubxona.html" class="glass px-4 py-2 rounded-xl hover:bg-white/20"><i class="fa-solid fa-book text-yellow-400 mr-2"></i>Kutubxona</a></div><a href="mavjud-kurslar.html" class="inline-block bg-yellow-400 text-black px-12 py-5 rounded-2xl text-2xl font-bold hover:scale-105 transition mb-20">BOSHLASH <i class="fa-solid fa-arrow-right ml-2"></i></a>
+<section id="kurslar" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-left"><a href="mavjud-kurslar.html" class="glass-card p-6 rounded-3xl hover:scale-105 transition"><i class="fa-solid fa-laptop-code text-3xl text-yellow-500"></i><h2 class="font-bold text-xl mt-4">Bepul kurslar</h2><p class="text-gray-600 text-sm">Barcha mavjud kurslarni ko‘rish</p></a><a href="sertifikat.html" class="glass-card p-6 rounded-3xl hover:scale-105 transition"><i class="fa-solid fa-award text-3xl text-pink-500"></i><h2 class="font-bold text-xl mt-4">Sertifikat</h2><p class="text-gray-600 text-sm">Progressingiz va sertifikatingiz</p></a><a href="kutubxona.html" class="glass-card p-6 rounded-3xl hover:scale-105 transition"><i class="fa-solid fa-book-open text-3xl text-blue-500"></i><h2 class="font-bold text-xl mt-4">Kutubxona</h2><p class="text-gray-600 text-sm">Kitoblar va interaktiv demolar</p></a><a href="profil.html" class="glass-card p-6 rounded-3xl hover:scale-105 transition"><i class="fa-solid fa-user text-3xl text-purple-600"></i><h2 class="font-bold text-xl mt-4">Profil</h2><p class="text-gray-600 text-sm">Shaxsiy profilingiz</p></a></section></main><footer class="glass py-6 text-center text-gray-400">© 2026 EduCore AI</footer>
+</body></html>
