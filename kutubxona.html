@@ -1,69 +1,42 @@
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kutubxona | Talim Hub</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
 </head>
 <body class="bg-gradient-to-br from-indigo-600 to-purple-800 min-h-screen p-8 text-white">
-  <div class="container mx-auto">
-    <h1 class="text-5xl font-bold text-center mb-10 text-yellow-300">KUTUBXONA – 30 TA KITOB</h1>
-    <input id="search" placeholder="Kitob izlash..." class="w-full p-4 rounded-xl bg-white/20 text-white placeholder-white/70 mb-6">
-
-    <div id="bookGrid" class="grid md:grid-cols-5 gap-6">
-      <!-- 30 ta kitob avto yuklanadi -->
-    </div>
+  <div class="container mx-auto max-w-7xl">
+    <div class="flex flex-wrap justify-between items-center gap-4 mb-8"><a href="index.html" class="text-yellow-300 hover:underline"><i class="fa-solid fa-arrow-left mr-2"></i>Bosh sahifa</a><a href="index.html#kurslar" class="bg-yellow-400 text-black px-5 py-2 rounded-xl font-bold">Kurslar</a></div>
+    <h1 class="text-5xl font-bold text-center mb-4 text-yellow-300">KUTUBXONA</h1>
+    <p class="text-center text-lg mb-10 text-white/80">Kitobni tanlang, demo ko‘ring yoki manbani oching</p>
+    <input id="search" placeholder="Kitob izlash..." class="w-full p-4 rounded-xl bg-white/20 text-white placeholder-white/70 mb-8">
+    <div id="bookGrid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
   </div>
-
   <script>
     const books = [
-      {title: "Python Dasturlash", url: "https://raw.githubusercontent.com/books-by/pdf/python.pdf"},
-      {title: "Web Dasturlash", url: "https://raw.githubusercontent.com/books-by/pdf/web.pdf"},
-      {title: "Ingliz tili A1", url: "https://raw.githubusercontent.com/books-by/pdf/english-a1.pdf"},
-      {title: "Matematika 11", url: "https://raw.githubusercontent.com/books-by/pdf/math11.pdf"},
-      {title: "Fizika 9", url: "https://raw.githubusercontent.com/books-by/pdf/fizika9.pdf"},
-      {title: "Kimyo 10", url: "https://raw.githubusercontent.com/books-by/pdf/kimyo10.pdf"},
-      {title: "IT Asoslari", url: "https://raw.githubusercontent.com/books-by/pdf/it-asoslari.pdf"},
-      {title: "Java Dasturlash", url: "https://raw.githubusercontent.com/books-by/pdf/java.pdf"},
-      {title: "AI Kirish", url: "https://raw.githubusercontent.com/books-by/pdf/ai-kirish.pdf"},
-      {title: "Data Science", url: "https://raw.githubusercontent.com/books-by/pdf/data-science.pdf"},
-      {title: "Cyber Security", url: "https://raw.githubusercontent.com/books-by/pdf/cyber-security.pdf"},
-      {title: "Android Dasturlash", url: "https://raw.githubusercontent.com/books-by/pdf/android.pdf"},
-      {title: "Flutter", url: "https://raw.githubusercontent.com/books-by/pdf/flutter.pdf"},
-      {title: "React JS", url: "https://raw.githubusercontent.com/books-by/pdf/react.pdf"},
-      {title: "Vue JS", url: "https://raw.githubusercontent.com/books-by/pdf/vue.pdf"},
-      {title: "Node JS", url: "https://raw.githubusercontent.com/books-by/pdf/node.pdf"},
-      {title: "SQL Asoslari", url: "https://raw.githubusercontent.com/books-by/pdf/sql.pdf"},
-      {title: "NoSQL", url: "https://raw.githubusercontent.com/books-by/pdf/nosql.pdf"},
-      {title: "Machine Learning", url: "https://raw.githubusercontent.com/books-by/pdf/ml.pdf"},
-      {title: "Deep Learning", url: "https://raw.githubusercontent.com/books-by/pdf/dl.pdf"},
-      {title: "Blockchain", url: "https://raw.githubusercontent.com/books-by/pdf/blockchain.pdf"},
-      {title: "Crypto", url: "https://raw.githubusercontent.com/books-by/pdf/crypto.pdf"},
-      {title: "Game Dev", url: "https://raw.githubusercontent.com/books-by/pdf/game-dev.pdf"},
-      {title: "Unity", url: "https://raw.githubusercontent.com/books-by/pdf/unity.pdf"},
-      {title: "Unreal Engine", url: "https://raw.githubusercontent.com/books-by/pdf/unreal.pdf"},
-      {title: "UI/UX Dizayn", url: "https://raw.githubusercontent.com/books-by/pdf/uiux.pdf"},
-      {title: "Figma", url: "https://raw.githubusercontent.com/books-by/pdf/figma.pdf"},
-      {title: "Adobe XD", url: "https://raw.githubusercontent.com/books-by/pdf/adobe-xd.pdf"},
-      {title: "Photoshop", url: "https://raw.githubusercontent.com/books-by/pdf/photoshop.pdf"},
-      {title: "Illustrator", url: "https://raw.githubusercontent.com/books-by/pdf/illustrator.pdf"},
-    ]; // Haqiqiy linklarni o'zingiz qo‘shing (raw.githubusercontent.com orqali)
-
-    const grid = document.getElementById('bookGrid');
-    books.forEach(b => {
-      grid.innerHTML += `<a href="${b.url}" target="_blank" class="glass p-6 rounded-2xl text-center hover:scale-105 transition shadow-xl">
-        <i class="fas fa-book text-6xl mb-4 text-yellow-300"></i>
-        <p class="text-xl font-bold">${b.title}</p>
-      </a>`;
-    });
-
-    document.getElementById('search').addEventListener('input', e => {
-      const term = e.target.value.toLowerCase();
-      grid.querySelectorAll('a').forEach(el => {
-        el.style.display = el.textContent.toLowerCase().includes(term) ? 'block' : 'none';
+      {title:'Python Dasturlash', icon:'fa-python', demo:'kurs-python.html'},
+      {title:'Web Dasturlash', icon:'fa-code', demo:'kurs-web.html'},
+      {title:'Ingliz tili A1', icon:'fa-language', demo:'kurs-ingliz.html'},
+      {title:'Olimpiada masalalari', icon:'fa-trophy', demo:'olimpiada.html'},
+      {title:'Matematika 11', icon:'fa-calculator'}, {title:'Fizika 9', icon:'fa-atom'},
+      {title:'Kimyo 10', icon:'fa-flask'}, {title:'IT Asoslari', icon:'fa-computer'},
+      {title:'Java Dasturlash', icon:'fa-code'}, {title:'AI Kirish', icon:'fa-robot'},
+      {title:'Data Science', icon:'fa-chart-line'}, {title:'Cyber Security', icon:'fa-shield-halved'},
+      {title:'Android Dasturlash', icon:'fa-mobile-screen'}, {title:'React JS', icon:'fa-react'},
+      {title:'SQL Asoslari', icon:'fa-database'}, {title:'UI/UX Dizayn', icon:'fa-palette'}
+    ];
+    const grid=document.getElementById('bookGrid');
+    function render(term='') {
+      grid.innerHTML='';
+      books.filter(b=>b.title.toLowerCase().includes(term.toLowerCase())).forEach(b=>{
+        const card=document.createElement('div'); card.className='bg-white/10 backdrop-blur-xl p-6 rounded-2xl text-center shadow-xl hover:-translate-y-2 transition';
+        card.innerHTML=`<i class="fa-solid ${b.icon} text-5xl mb-4 text-yellow-300"></i><h2 class="text-xl font-bold mb-4">${b.title}</h2><a href="${b.demo || '#'}" ${b.demo?'':'onclick="alert(\'Bu kitob uchun demo tez orada qo‘shiladi.\');return false;"'} class="inline-block bg-yellow-400 text-black px-4 py-2 rounded-xl font-bold hover:bg-yellow-300">${b.demo?'Demo ko‘rish':'Tez orada'}</a>`;
+        grid.appendChild(card);
       });
-    });
+    }
+    render(); document.getElementById('search').addEventListener('input',e=>render(e.target.value));
   </script>
 </body>
 </html>
