@@ -1,42 +1,5 @@
 <!DOCTYPE html>
 <html lang="uz">
-<head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kutubxona | Talim Hub</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
-</head>
-<body class="bg-gradient-to-br from-indigo-600 to-purple-800 min-h-screen p-8 text-white">
-  <div class="container mx-auto max-w-7xl">
-    <div class="flex flex-wrap justify-between items-center gap-4 mb-8"><a href="index.html" class="text-yellow-300 hover:underline"><i class="fa-solid fa-arrow-left mr-2"></i>Bosh sahifa</a><a href="index.html#kurslar" class="bg-yellow-400 text-black px-5 py-2 rounded-xl font-bold">Kurslar</a></div>
-    <h1 class="text-5xl font-bold text-center mb-4 text-yellow-300">KUTUBXONA</h1>
-    <p class="text-center text-lg mb-10 text-white/80">Kitobni tanlang, demo ko‘ring yoki manbani oching</p>
-    <input id="search" placeholder="Kitob izlash..." class="w-full p-4 rounded-xl bg-white/20 text-white placeholder-white/70 mb-8">
-    <div id="bookGrid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
-  </div>
-  <script>
-    const books = [
-      {title:'Python Dasturlash', icon:'fa-python', demo:'kurs-python.html'},
-      {title:'Web Dasturlash', icon:'fa-code', demo:'kurs-web.html'},
-      {title:'Ingliz tili A1', icon:'fa-language', demo:'kurs-ingliz.html'},
-      {title:'Olimpiada masalalari', icon:'fa-trophy', demo:'olimpiada.html'},
-      {title:'Matematika 11', icon:'fa-calculator'}, {title:'Fizika 9', icon:'fa-atom'},
-      {title:'Kimyo 10', icon:'fa-flask'}, {title:'IT Asoslari', icon:'fa-computer'},
-      {title:'Java Dasturlash', icon:'fa-code'}, {title:'AI Kirish', icon:'fa-robot'},
-      {title:'Data Science', icon:'fa-chart-line'}, {title:'Cyber Security', icon:'fa-shield-halved'},
-      {title:'Android Dasturlash', icon:'fa-mobile-screen'}, {title:'React JS', icon:'fa-react'},
-      {title:'SQL Asoslari', icon:'fa-database'}, {title:'UI/UX Dizayn', icon:'fa-palette'}
-    ];
-    const grid=document.getElementById('bookGrid');
-    function render(term='') {
-      grid.innerHTML='';
-      books.filter(b=>b.title.toLowerCase().includes(term.toLowerCase())).forEach(b=>{
-        const card=document.createElement('div'); card.className='bg-white/10 backdrop-blur-xl p-6 rounded-2xl text-center shadow-xl hover:-translate-y-2 transition';
-        card.innerHTML=`<i class="fa-solid ${b.icon} text-5xl mb-4 text-yellow-300"></i><h2 class="text-xl font-bold mb-4">${b.title}</h2><a href="${b.demo || '#'}" ${b.demo?'':'onclick="alert(\'Bu kitob uchun demo tez orada qo‘shiladi.\');return false;"'} class="inline-block bg-yellow-400 text-black px-4 py-2 rounded-xl font-bold hover:bg-yellow-300">${b.demo?'Demo ko‘rish':'Tez orada'}</a>`;
-        grid.appendChild(card);
-      });
-    }
-    render(); document.getElementById('search').addEventListener('input',e=>render(e.target.value));
-  </script>
-</body>
-</html>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Kutubxona | EduCore AI</title><script src="https://cdn.tailwindcss.com"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"><style>body{background:radial-gradient(circle at 80% 0,#0e7490,transparent 30%),linear-gradient(135deg,#0f172a,#172554);font-family:Segoe UI,sans-serif}.book{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.14);backdrop-filter:blur(14px)}</style></head>
+<body class="min-h-screen text-white p-6 md:p-10"><main class="max-w-7xl mx-auto"><header class="flex flex-wrap justify-between items-center gap-4 mb-12"><a href="index.html" class="text-cyan-300 hover:underline"><i class="fa-solid fa-arrow-left mr-2"></i>Bosh sahifa</a><a href="mavjud-kurslar.html" class="bg-cyan-400 text-slate-900 px-5 py-3 rounded-xl font-bold">Kurslarni ko‘rish</a></header><section class="text-center mb-10"><div class="text-cyan-300 text-5xl mb-4"><i class="fa-solid fa-book-open-reader"></i></div><h1 class="text-5xl md:text-6xl font-black">EduCore kutubxonasi</h1><p class="text-white/65 text-lg mt-3">Bilim uchun tanlangan manbalar va interaktiv demolar</p></section><div class="max-w-2xl mx-auto relative mb-10"><i class="fa-solid fa-magnifying-glass absolute left-5 top-5 text-white/50"></i><input id="search" placeholder="Kitob yoki mavzu izlang..." class="w-full p-4 pl-14 rounded-2xl bg-white/10 border border-white/20 outline-none focus:ring-2 focus:ring-cyan-400 text-white"></div><div id="bookGrid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6"></div></main><script>
+const books=[['Python Dasturlash','fa-brands fa-python','kurs-python.html'],['Web Dasturlash','fa-solid fa-code','kurs-web.html'],['Ingliz tili A1–C1','fa-solid fa-language','kurs-ingliz.html'],['Olimpiada masalalari','fa-solid fa-trophy','olimpiada.html'],['Matematika 11','fa-solid fa-calculator'],['Fizika 9','fa-solid fa-atom'],['Kimyo 10','fa-solid fa-flask'],['IT Asoslari','fa-solid fa-computer'],['Java Dasturlash','fa-solid fa-code'],['AI Kirish','fa-solid fa-robot'],['Data Science','fa-solid fa-chart-line'],['Cyber Security','fa-solid fa-shield-halved'],['Android Dasturlash','fa-solid fa-mobile-screen'],['React JS','fa-brands fa-react'],['SQL Asoslari','fa-solid fa-database'],['UI/UX Dizayn','fa-solid fa-palette']];const grid=document.getElementById('bookGrid');function render(q=''){grid.innerHTML='';books.filter(b=>b[0].toLowerCase().includes(q.toLowerCase())).forEach(b=>{const el=document.createElement('article');el.className='book rounded-3xl p-6 hover:-translate-y-2 transition shadow-xl';el.innerHTML=`<div class="w-14 h-14 rounded-2xl bg-cyan-400/20 text-cyan-300 flex items-center justify-center text-2xl mb-5"><i class="${b[1]}"></i></div><h2 class="text-xl font-bold">${b[0]}</h2><p class="text-white/55 text-sm mt-2 mb-6">EduCore tanlangan manbasi</p>${b[2]?`<a href="${b[2]}" class="inline-block bg-cyan-400 text-slate-900 px-4 py-2 rounded-xl font-bold">Demo ko‘rish <i class="fa-solid fa-arrow-right ml-1"></i></a>`:'<span class="inline-block bg-white/10 text-white/50 px-4 py-2 rounded-xl">Tez orada</span>'}`;grid.appendChild(el)})}render();document.getElementById('search').addEventListener('input',e=>render(e.target.value));</script></body></html>
